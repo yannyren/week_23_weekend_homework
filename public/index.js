@@ -4,6 +4,8 @@ var app = function(){
   button.addEventListener('click', function(){
     makeRequest(requestComplete);
   })
+
+  const mainMap = new MapWrapper();
 }
 
 
@@ -25,19 +27,22 @@ const requestComplete = function(){
   const giphyList= JSON.parse(jsonString);
 
   const imgList = document.querySelector('.giphy-list');
-
+  //remove all previous img
   while(imgList.firstChild) {
     imgList.removeChild(imgList.firstChild);
   }
-
+  //render img
   for(let giphy of giphyList.data) {
     // console.log("giphy list", ryan.images.original.url);
     const img = document.createElement('img');
     img.src = giphy.images.original.url;
     img.classList.add('giphy');
     imgList.appendChild(img);
-
   }
+
+  const input = document.querySelector('input');
+  input.value
+
 }
 
 document.addEventListener('DOMContentLoaded', app);
